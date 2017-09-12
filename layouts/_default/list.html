@@ -1,8 +1,15 @@
 {{ partial "header.html" . }}
+
+{{ if .Data.Pages }}
 <main role="main" class="article-list">
   <h1 class="list-title">{{ .Title }}</h1>
   {{ range .Data.Pages }}
     {{ partial "article-list-item.html" . }}
   {{ end }}
 </main>
+{{else}}
+<main role="main" class="article">
+  {{ partial "article.html" . }}
+</main>
+{{end}}
 {{ partial "footer.html" . }}

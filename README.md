@@ -1,7 +1,6 @@
-# Base16 Theme for Hugo
+# BlacknTight Theme for Hugo
 
-![Hugo Base16 Theme screenshot](https://raw.githubusercontent.com/htdvisser/hugo-base16-theme/master/images/screenshot.png)
-
+Based of Base16, check [here](https://govanify.com) for a visual.  
 ## Installation
 
     $ mkdir themes
@@ -36,11 +35,6 @@ After this, you can edit `layouts/partials/hero.html` and make it awesome.
 
 ## License
 
-MIT Licensed, see [LICENSE](https://github.com/htdvisser/hugo-base16-theme/blob/master/LICENSE).
+MIT Licensed, see [LICENSE](https://github.com/GovanifY/blackntight/blob/master/LICENSE).
 
 
-## Don't forget to thank...
-
-[Steve Francia](https://github.com/spf13) for Hugo.  
-[Chris Kempson](http://chriskempson.com) for the Base16 Eighties Colorscheme.  
-[Jan T. Sott](https://github.com/idleberg) for the Pygments template.

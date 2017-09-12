@@ -1,0 +1,29 @@
+ <!-- ignore empty links with + -->
+{{ $headers := findRE "<h[1-2].*?>(.|\n])+?</h[1-2]>" .Content }}
+<!-- at least one header to link to -->
+{{ $has_headers := ge (len $headers) 1 }}
+<!-- a post can explicitly disable Table of Contents with toc: false -->
+{{if $headers }}
+    <!-- TOC header -->
+    <li class="pure-menu-item"><center><a class="pure-menu-link">ToC</a></center></li>
+    {{ range $headers }}
+        {{ $header := . }}
+        {{ range first 1 (findRE "<h[1-2]" $header 1) }}
+            {{ range findRE "[1-2]" . 1 }}
+                {{ $next_heading := (int .) }}
+                <!-- generate li array of the proper depth -->
+                {{ range seq $next_heading }}
+                                   {{end}}
+                {{ $base := ($.Page.File.LogicalName) }}
+                {{ $anchorId := ($header | plainify | htmlEscape | urlize) }}
+                {{ $href := delimit (slice $base $anchorId) "#" | string }}
+                <li class="pure-menu-item">
+                    <a class="pure-menu-link-toc" href="#{{ $anchorId}}"> {{ $header | plainify | htmlEscape }}</a>
+                </li>
+                <!-- close list -->
+                {{ range seq $next_heading }}
+                {{end}}
+            {{end}}
+        {{end}}
+    {{ end }}
+{{end}}

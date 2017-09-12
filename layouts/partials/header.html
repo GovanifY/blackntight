@@ -7,24 +7,98 @@
 <meta name="author" content="{{ .Site.Params.author }}">
 {{ .Hugo.Generator }}
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="{{ "/css/style.css" | absURL }}" type="text/css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
-<link rel="alternate" href="{{ "/index.xml" | absURL }}" type="application/rss+xml" title="{{ .Site.Title }}">
+<link rel="stylesheet" href="{{$.Site.BaseURL}}/css/style.css" type="text/css">
+<script src="{{$.Site.BaseURL}}/js/jQuery.js"></script>
+
+<style type="text/css">
+/* Fuck Google Fonts*/
+
+/* latin-ext */
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'), url({{ "/fonts/SourceCodePro-Regular-latin-ext.woff2" | absURL }}) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Code Pro'), local('SourceCodePro-Regular'), url({{ "/fonts/SourceCodePro-Regular-latin.woff2" | absURL }}) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), url({{ "/fonts/SourceCodePro-Bold-latin-ext.woff2" | absURL }}) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Source Code Pro Bold'), local('SourceCodePro-Bold'), url({{ "/fonts/SourceCodePro-Bold-latin.woff2" | absURL }}) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+</style>
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="{{ .Site.Title }}">
+<meta name="twitter:site" content="@GovanifY">
+<meta name="twitter:creator" content="@GovanifY">
+<meta name="twitter:card" content="summary" />
+{{ if .IsPage }}
+<meta name="og:description" content="{{ .Summary }}" />
+<meta name="og:title" content="{{ .Title }}" />
+<meta name="og:image" content="{{ .Params.image }}" />
+{{ else }}
+<meta name="og:title" content="GovanifY" />
+<meta name="og:description" content="This is GovanifY's website. You'll find hackerish stuff there. Or science. Or music. Or drawing. Or WAIT I DON'T KNOW STOP IT" />
+{{ end }}
+<meta property="og:image" content="{{ .Site.BaseURL}}img/star.png">
 <title>{{ $isHomePage := eq .Title .Site.Title }}{{ .Title }}{{ if eq $isHomePage false }} - {{ .Site.Title }}{{ end }}</title>
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//stats.govanify.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
 </head>
 <body>
 
-<header>
-  <div class="container clearfix">
-    <a class="path" href="{{ .Site.BaseURL }}">[{{ .Site.Title }}]</a>
-    <span class="caret"># _</span>
-    <div class="right">
-      {{ range $i, $page := (where .Site.Pages "Section" "pages") }}
-        {{ if not (eq $i 0) }}|{{ end }}
-        <a class="path" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
-      {{ end }}
+    {{ partial "hero.html" . }}
+
+<div id="layout">
+    <a href="#menu" id="menuLink" class="menu-link">
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu">
+            <a class="pure-menu-heading" href="{{ .Site.BaseURL}}/">GovanifY # _</a>
+
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="{{ .Site.BaseURL}}/post/" class="pure-menu-link">Posts</a></li>
+                <li class="pure-menu-item"><a href="{{ .Site.BaseURL}}/projects"
+                        class="pure-menu-link">Projects</a></li>
+                <li class="pure-menu-item"><a href="{{ .Site.BaseURL}}/about" class="pure-menu-link">About</a></li>
+          {{ partial "table-of-contents" . }}
+          </ul>
+        </div>
     </div>
-  </div>
-</header>
+
+    <div id="main">
 
 <div class="container">
