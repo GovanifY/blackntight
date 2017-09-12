@@ -5,7 +5,7 @@ Based of Base16, check [here](https://govanify.com) for a visual.
 
     $ mkdir themes
     $ cd themes
-    $ git clone https://github.com/htdvisser/hugo-base16-theme.git base16
+    $ git clone https://github.com/GovanifY/blackntight.git blackntight
 
 See [the Hugo documentation](http://gohugo.io/themes/installing/) for more information.
 
