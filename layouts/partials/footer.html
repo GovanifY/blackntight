@@ -1,5 +1,5 @@
 {{ $dateMissing := eq .Date.Year 1}}
-<script async src="{{$.Site.BaseURL}}/js/ui.js"></script>
+<script defer src="{{$.Site.BaseURL}}/js/ui.js"></script>
 
 <footer>
   <div class="container">
@@ -11,7 +11,9 @@
 </div>
 </div>
   <script>
-    renderMathInElement(document.body);
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body);
+    });
   </script>
 </body>
 </html>
