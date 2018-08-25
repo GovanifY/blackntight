@@ -1,5 +1,5 @@
 {{ $dateMissing := eq .Date.Year 1}}
-<script defer src="{{$.Site.BaseURL}}/js/ui.js"></script>
+<script defer src="{{$.Site.BaseURL}}/js/ui.min.js"></script>
 
 <footer>
   <div class="container">
@@ -16,7 +16,7 @@
     });
   </script>
     <noscript id="deferred-styles">
-      <link rel="stylesheet" type="text/css" href="{{$.Site.BaseURL}}/css/style.css"/>
+      <link rel="stylesheet" type="text/css" href="{{$.Site.BaseURL}}/css/style.min.css"/>
       <link rel="stylesheet" type="text/css" href="{{$.Site.BaseURL}}/js/katex/katex.min.css"/>
     </noscript>
     <script>
