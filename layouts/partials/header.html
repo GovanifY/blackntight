@@ -5,7 +5,7 @@
 <meta name="description" content="{{ if eq .Description "" }}{{ .Site.Params.description }}{{ else }}{{ .Description }}{{ end }}">
 <meta name="keywords" content="{{ delimit .Keywords  "," }}">
 <meta name="author" content="{{ .Site.Params.author }}">
-{{ .Hugo.Generator }}
+{{ hugo.Generator }}
 <link rel="shortcut icon" type="image/png" href="{{ .Site.BaseURL}}/img/star.png"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script defer src="{{$.Site.BaseURL}}/js/jQuery.min.js"></script>
