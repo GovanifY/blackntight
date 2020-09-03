@@ -1,6 +1,9 @@
 {{ $baseurl := .Site.BaseURL }}
 <main role="main" class="homepage">
 
+    {{ with .Site.GetPage "about" }}
+        {{ partial "article.html" . }}
+    {{ end }}
 
   <h1 class="headline">Recent Posts</h1>
 
