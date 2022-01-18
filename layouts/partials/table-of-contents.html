@@ -15,10 +15,10 @@
                 {{ range seq $next_heading }}
                                    {{end}}
                 {{ $base := ($.Page.File.LogicalName) }}
-                {{ $anchorId := ($header | plainify | htmlEscape | urlize) }}
+                {{ $anchorId := ($header | plainify) }}
                 {{ $href := delimit (slice $base $anchorId) "#" | string }}
                 <li class="pure-menu-item">
-                    <a class="pure-menu-link-toc" href="#{{ $anchorId}}"> {{ $header | plainify | htmlEscape }}</a>
+                    <a class="pure-menu-link-toc" href="#{{ $anchorId | anchorize}}"> {{ $anchorId }}</a>
                 </li>
                 <!-- close list -->
                 {{ range seq $next_heading }}
